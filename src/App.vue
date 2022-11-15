@@ -1,26 +1,69 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <task v-bind:tasks="tasks"
+          @remove="removeColor(index)"
+    ></task>
+  </div>
 </template>
 
+
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Task from './components/Task.vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Task,
+  },
+  data() {
+    return {
+      tasks: [
+        {
+          id: 1,
+          colors: "my yellow",
+        },
+        {
+          id: 2,
+          colors: "red as i like it",
+        },
+        {
+          id: 3,
+          colors: "my grass",
+        },
+        {
+          id: 4,
+          colors: "out of the blue",
+        },
+        {
+          id: 5,
+          colors: "deep purple",
+        },
+        {
+          id: 6,
+          colors: "something",
+        },
+      ],
+    };
+  },
+  methods: {
+    removeColor(index){
+      this.tasks.splice(index, 1)
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
+ #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
+  align-items: center;
+  justify-content: center;
+  background-color:whitesmoke;
+  width: 450px;
+  height: 450px;
+  margin:auto
+} 
 </style>
